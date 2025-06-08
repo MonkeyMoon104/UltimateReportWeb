@@ -1,0 +1,159 @@
+/* Reset base */
+* {
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0d1a22, #1a2d36, #244257); /* leggermente più scuro */
+    color: #ddd; /* meno brillante */
+    margin: 20px;
+    min-height: 100vh;
+}
+
+/* Titolo */
+h1 {
+    color: #00b8cc; /* meno luminoso */
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-shadow: 0 0 6px #00b8ccaa; /* leggermente meno glow */
+}
+
+/* Dashboard cards */
+.dashboard {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.07); /* meno luminoso */
+    border-radius: 15px;
+    padding: 25px 40px;
+    flex: 1 1 250px;
+    box-shadow: 0 8px 24px rgba(0, 184, 204, 0.2); /* meno brillante */
+    cursor: default;
+    user-select: none;
+    text-align: center;
+    color: #00b8cc; /* colore testo meno luminoso */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow effect on hover */
+.card:hover {
+    box-shadow: 0 0 18px #00b8cccc, 0 0 36px #00b8cccc, 0 0 72px #00b8cccc;
+    transform: scale(1.05);
+}
+
+.card h2 {
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.card p {
+    font-size: 3rem;
+    font-weight: 900;
+    text-shadow: 0 0 12px #00b8ccbb; /* meno intenso */
+}
+
+/* Table style */
+table {
+    width: 100%;
+    max-width: 100%; /* estende tutta la larghezza possibile */
+    margin: 0 auto 50px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 184, 204, 0.15);
+    background: rgba(255, 255, 255, 0.035);
+    table-layout: fixed; /* larghezza colonne fissa secondo percentuali */
+}
+
+thead {
+    background: #00b8cc;
+    color: #0b0b0b;
+}
+
+thead th {
+    padding: 15px 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center; /* centra header */
+}
+
+/* Larghezza colonne */
+thead th:nth-child(1), /* ID */
+tbody td:nth-child(1) {
+    width: 10%;
+}
+
+thead th:nth-child(2), /* Target */
+tbody td:nth-child(2) {
+    width: 25%;
+}
+
+thead th:nth-child(3), /* Motivo */
+tbody td:nth-child(3) {
+    width: 25%;
+}
+
+thead th:nth-child(4), /* Data */
+tbody td:nth-child(4) {
+    width: 20%;
+}
+
+/* Blocca ID, Target e Data su una riga senza andare a capo */
+tbody td:not(.motivo) {
+    white-space: nowrap;
+}
+
+/* Colonna motivo con wrapping */
+td.motivo {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Centra orizzontalmente e verticalmente il contenuto */
+tbody td {
+    padding: 12px 18px;
+    color: #bbb;
+    font-size: 1rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+tbody tr {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: rgba(0, 184, 204, 0.07);
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+    .dashboard {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    table {
+        font-size: 0.9rem;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
