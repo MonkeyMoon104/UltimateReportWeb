@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/include/db.php';
 require_once __DIR__ . '/include/functions.php';
+require_once __DIR__ . '/include/lang.php';
 
 $view = $_GET['view'] ?? 'dashboard';
 
@@ -24,7 +25,7 @@ function formatDateItalianTimeFirst($datetime) {
 <html lang="it">
 <head>
     <meta charset="UTF-8" />
-    <title>Ultimate Reports Dashboard</title>
+    <title><?= __('dashboard_title') ?></title>
     <link rel="stylesheet" href="assets/style.css" />
     <style>
       h1.clickable {
@@ -49,16 +50,16 @@ function formatDateItalianTimeFirst($datetime) {
 <body>
 
 <?php if ($view === 'valid'): ?>
-    <h1 class="clickable" onclick="window.location.href='index.php'">Report Validi per Giocatore</h1>
+    <h1 class="clickable" onclick="window.location.href='index.php'"><?= __('valid_reports') ?> <?= __('player') ?></h1>
 
     <?php if (empty($validReports)): ?>
-        <p>Empty</p>
+        <p><?= __('empty') ?></p>
     <?php else: ?>
         <table>
             <thead>
                 <tr>
-                    <th>Giocatore</th>
-                    <th>Report Validi</th>
+                    <th><?= __('player') ?></th>
+                    <th><?= __('valid_reports') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -73,19 +74,19 @@ function formatDateItalianTimeFirst($datetime) {
     <?php endif; ?>
 
 <?php else: ?>
-    <h1>Ultimate Reports Dashboard</h1>
+    <h1><?= __('dashboard_title') ?></h1>
 
     <div class="dashboard">
         <div class="card">
-            <h2>Totale Report</h2>
+            <h2><?= __('total_reports') ?></h2>
             <p><?= $stats['total'] ?? 0 ?></p>
         </div>
         <div class="card">
-            <h2>Pending</h2>
+            <h2><?= __('pending') ?></h2>
             <p><?= $stats['pending'] ?? 0 ?></p>
         </div>
         <div class="card" onclick="window.location.href='index.php?view=valid'" style="cursor:pointer;">
-            <h2>Validi</h2>
+            <h2><?= __('valid') ?></h2>
             <p><?= $stats['valid'] ?? 0 ?></p>
         </div>
     </div>
@@ -93,10 +94,10 @@ function formatDateItalianTimeFirst($datetime) {
     <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Target</th>
-                <th>Motivo</th>
-                <th>Data</th>
+                <th><?= __('id') ?></th>
+                <th><?= __('target') ?></th>
+                <th><?= __('reason') ?></th>
+                <th><?= __('date') ?></th>
             </tr>
         </thead>
         <tbody>
